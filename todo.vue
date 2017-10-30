@@ -162,7 +162,7 @@ var app = new Vue({
 
     data: {
         newTask: "",
-        todoList: ["dishes", "laundry"]
+        todoList: []
     },
 
     methods: {
@@ -171,6 +171,12 @@ var app = new Vue({
             this.todoList.push(this.newTask)
 
             this.newTask = ""
+        },
+
+        deleteTask(todo) {
+            // this.todoList
+            this.todoList.splice(this.todoList.indexOf(todo), 1)
+            console.log(todo);
         }
     },
 

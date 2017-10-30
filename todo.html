@@ -14,7 +14,7 @@
                 <h1>todos</h1>
                 <!-- <input class="new-todo" autofocus autocomplete="off" placeholder="What needs to be done?" v-model="newTodo" @keyup.enter="addTodo"> -->
                 <ul>
-                    <li v-for="item in todoList">{{item}}</li>
+                    <li v-for="item in todoList">{{item}} <span @click="deleteTask(item)">X</span></li>
                 </ul>
                 <input type="text" id="input" v-model="newTask">
                 <button @click="addTask">Add Task</button>
