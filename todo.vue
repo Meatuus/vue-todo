@@ -162,7 +162,9 @@ var app = new Vue({
 
     data: {
         newTask: "",
-        todoList: []
+        todoList: [],
+        filteredTodoList: [],
+        status: "all"
     },
 
     methods: {
@@ -174,10 +176,34 @@ var app = new Vue({
             })
 
             this.newTask = ""
+
+            this.filteredTodoList = this.todoList
+
+            if (this.status === "completed") {
+                this.filteredTodoList = this.todoList.filter(item => item.completed === true)
+            } else if (this.status === "incomplete") {
+                this.filteredTodoList = this.todoList.filter(item => item.completed === false)
+            }
         },
+
 
         deleteTask(todo) {
             this.todoList.splice(this.todoList.indexOf(todo), 1)
+        },
+
+        viewCompleted() {
+            this.status = "completed"
+            this.filteredTodoList = this.todoList.filter(item => item.completed === true)
+        },
+
+        viewIncomplete() {
+            this.status = "incomplete"
+            this.filteredTodoList = this.todoList.filter(item => item.completed === false)
+        },
+
+        viewAll() {
+            this.status = "all"
+            this.filteredTodoList = this.todoList
         }
     },
 
