@@ -168,15 +168,16 @@ var app = new Vue({
     methods: {
 
         addTask() {
-            this.todoList.push(this.newTask)
+            this.todoList.push({
+                item: this.newTask,
+                completed: false
+            })
 
             this.newTask = ""
         },
 
         deleteTask(todo) {
-            // this.todoList
             this.todoList.splice(this.todoList.indexOf(todo), 1)
-            console.log(todo);
         }
     },
 
